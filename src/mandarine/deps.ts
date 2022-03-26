@@ -1,6 +1,8 @@
 export {
   Controller,
   GET,
+  POST,
+  RequestBody,
   MandarineCore,
   Model,
   Render,

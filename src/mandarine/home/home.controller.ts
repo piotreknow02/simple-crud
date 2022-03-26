@@ -1,4 +1,4 @@
-import { Controller, GET, Render, Model, ViewModel, MandarineCore, Inject } from "../deps.ts";
+import { Controller, GET, Render, Model, ViewModel, Inject } from "../deps.ts";
 import { HomeService } from "./home.service.ts"
 
 @Controller()
