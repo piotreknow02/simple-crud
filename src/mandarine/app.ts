@@ -1,0 +1,10 @@
+import { MandarineCore } from "./deps.ts";
+import { MyController } from "./hello_world/helloWorld.ts";
+const controllers = [MyController];
+const services = [];
+const middleware = [];
+const repositories = [];
+const configurations = [];
+const components = [];
+const otherModules = [];
+new MandarineCore().MVC().run();
