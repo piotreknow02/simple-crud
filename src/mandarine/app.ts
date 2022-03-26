@@ -1,6 +1,7 @@
 import { MandarineCore } from "./deps.ts";
-import { MyController } from "./hello_world/helloWorld.ts";
-const controllers = [MyController];
+import { HomeController } from "./controllers-export.ts"
+
+const controllers = [HomeController];
 const services = [];
 const middleware = [];
 const repositories = [];
