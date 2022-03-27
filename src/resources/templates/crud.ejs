@@ -8,14 +8,14 @@
 </head>
 <body>
     <h1>Menu</h1>
-    <h2><a href="/create">+</a></h2>
+    <h2><a href="/crud/create">+</a></h2>
     <ul>
-        <% for(const item of data.filesArray) { %>
+        <% for(const i in data.filesArray) { %>
             <li>
-                <p><%= item %></p>
-                <a href="/crud/read/">Read</a>
-                <a href="/crud/update">update</a>
-                <a href="/crud/delete">delete</a> 
+                <span><%= data.filesArray[i] %></span>
+                <a href="/crud/read?id=<%= i %>">Read</a>
+                <a href="/crud/update?id=<%= i %>">update</a>
+                <a href="/crud/delete?id=<%= i %>">delete</a> 
             </li>
         <% } %>
     </ul>

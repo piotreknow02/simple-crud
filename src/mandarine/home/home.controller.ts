@@ -4,7 +4,7 @@ import { HomeService } from "./home.service.ts"
 @Controller()
 export class HomeController {
     @Inject()
-    private homeService: HomeService;
+    private homeService!: HomeService;
     @GET("/")
     @Render("index.ejs")
     public index(@Model() model: ViewModel)

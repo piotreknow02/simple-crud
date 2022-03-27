@@ -1,4 +1,4 @@
-import { Service } from "../deps.ts";
+import { Service, existsSync } from "../deps.ts";
 
 const DEFAULT_DATA_DIR = "/data";
 
@@ -11,13 +11,13 @@ export class FilesService {
         return directory;
     }
 
-    private checkDirectoryOrCreate(directory: string) {
-        if (!Deno.statSync(directory).isDirectory) {
+    private checkDirectoryOrCreate(directory: string): void {
+        if (!existsSync(directory)) {
             Deno.mkdirSync(directory);
         }
     }
 
-    public getFileNumber() {
+    public getFileNumber(): number {
         const directory = this.getDataDirectory();
         this.checkDirectoryOrCreate(directory);
         const files = Deno.readDirSync(directory);
@@ -28,28 +28,28 @@ export class FilesService {
         return num;
     }
 
-    public getFiles() {
+    public getFiles(): string[] {
         const directory = this.getDataDirectory();
         const files = Deno.readDirSync(directory);
-        return [...files].filter(file => file.isFile);
+        return [...files].filter(file => file.isFile).map(file => file.name);
     }
 
-    public saveContentToFile(content: string, fileName: string) {
+    public saveContentToFile(content: string, fileName: string): void {
         const directory = this.getDataDirectory();
         Deno.writeFileSync(`${directory}/${fileName}`, new TextEncoder().encode(content));
     }
 
-    public getFileContent(fileName: string) {
+    public getFileContent(fileName: string): string {
         const directory = this.getDataDirectory();
-        return Deno.readFileSync(`${directory}/${fileName}`).toString();
+        return new TextDecoder().decode(Deno.readFileSync(`${directory}/${fileName}`));
     }
 
-    public editFileContent(fileName: string, content: string) {
+    public editFileContent(fileName: string, content: string): void {
         const directory = this.getDataDirectory();
         Deno.writeFileSync(`${directory}/${fileName}`, new TextEncoder().encode(content));
     }
 
-    public deleteFile(fileName: string) {
+    public deleteFile(fileName: string): void {
         const directory = this.getDataDirectory();
         Deno.removeSync(`${directory}/${fileName}`);
     }

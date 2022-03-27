@@ -1,4 +1,4 @@
-import { Service, Injectable } from "../deps.ts";
+import { Service } from "../deps.ts";
 
 @Service()
 export class HomeService {

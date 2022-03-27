@@ -4,29 +4,32 @@ import { FilesService } from "../files/files.service.ts";
 @Service()
 export class CrudService {
     @Inject()
-    private filesService: FilesService;
+    private filesService!: FilesService;
 
-    public getFileNumber() {
+    public getFileNumber(): number {
         return this.filesService.getFileNumber();
     }
 
-    public getFiles() {
-        return this.filesService.getFiles().map(file => file.name);
+    public getFiles(): string[] {
+        return this.filesService.getFiles();
     }
 
-    public saveContentToFile(content: string, fileName: string) {
+    public createFile(content: string, fileName: string): void {
         this.filesService.saveContentToFile(content, fileName);
     }
 
-    public getFileContent(fileName: string) {
+    public getFileContent(id: number): string {
+        const fileName = this.filesService.getFiles()[id];
         return this.filesService.getFileContent(fileName);
     }
 
-    public editFileContent(fileName: string, content: string) {
+    public editFile(id: number, content: string): void {
+        const fileName = this.filesService.getFiles()[id];
         this.filesService.editFileContent(fileName, content);
     }
 
-    public deleteFile(fileName: string) {
+    public deleteFile(id: number): void {
+        const fileName = this.filesService.getFiles()[id];
         this.filesService.deleteFile(fileName);
     }
 }

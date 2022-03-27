@@ -2,7 +2,6 @@ export {
   Controller,
   GET,
   POST,
-  RequestBody,
   MandarineCore,
   Model,
   Render,
@@ -10,4 +9,9 @@ export {
   ViewModel,
   Injectable,
   Inject,
+  RequestParam,
+  ResponseParam,
+  QueryParam,
+  RequestBody,
 } from "https://deno.land/x/mandarinets@v2.3.2/mod.ts";
+export { existsSync } from "https://deno.land/std/fs/mod.ts";
