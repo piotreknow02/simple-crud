@@ -1,0 +1,8 @@
+.vscode
+.editorconfig
+.env.example
+.env
+.gitignore
+LICENSE
+README.md
+.DS_Store
